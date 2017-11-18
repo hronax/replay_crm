@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171118165728) do
+ActiveRecord::Schema.define(version: 20171118180322) do
 
-  create_table "cashboxes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "amount", default: 0
+  create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "amount"
+    t.integer "user_id"
+    t.integer "visit_id"
+    t.integer "transaction_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -32,6 +37,20 @@ ActiveRecord::Schema.define(version: 20171118165728) do
     t.string "type", default: "Client"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "visits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "ps_number"
+    t.datetime "game_start"
+    t.datetime "game_end"
+    t.integer "user_id"
+    t.integer "visit_type"
+    t.integer "transaction_id"
+    t.integer "additional_gamepads_count"
+    t.integer "bonus_id"
+    t.integer "abonement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
