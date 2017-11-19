@@ -20,13 +20,32 @@ ActiveRecord::Schema.define(version: 20171118194841) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "abonements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "abonement_type"
+    t.integer "manager_id"
+    t.integer "client_id"
+    t.integer "nominal"
+    t.integer "balance"
+  end
+
+  create_table "bonus_sources", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+  end
+
+  create_table "bonuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "bonus_type"
+    t.string "name"
+    t.integer "amount"
+  end
+
+  create_table "money_transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "amount"
     t.integer "user_id"
     t.integer "visit_id"
     t.integer "transaction_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -45,6 +64,13 @@ ActiveRecord::Schema.define(version: 20171118194841) do
     t.string "type", default: "Client"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_visits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.integer "visit_id"
+    t.index ["user_id"], name: "index_users_visits_on_user_id"
+    t.index ["visit_id"], name: "index_users_visits_on_visit_id"
   end
 
   create_table "visits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

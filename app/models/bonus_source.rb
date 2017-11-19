@@ -1,0 +1,3 @@
+class BonusSource < ApplicationRecord
+
+end
