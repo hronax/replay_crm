@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20171118194841) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type", default: "Client"
+    t.string "type", default: "User::Client"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
