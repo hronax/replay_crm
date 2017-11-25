@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125132801) do
+ActiveRecord::Schema.define(version: 20171125163523) do
 
   create_table "abonements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "abonement_type"
     t.integer "manager_id"
     t.integer "client_id"
-    t.integer "nominal"
-    t.integer "balance"
+    t.float "nominal", limit: 24
+    t.float "balance", limit: 24
   end
 
   create_table "bonus_sources", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

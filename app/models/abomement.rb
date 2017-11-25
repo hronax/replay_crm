@@ -1,3 +1,0 @@
-class Abonement < ApplicationRecord
-
-end

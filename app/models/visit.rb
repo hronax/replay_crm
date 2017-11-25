@@ -1,7 +1,8 @@
 class Visit < ApplicationRecord
   has_one :cash_transaction
   belongs_to :user, class_name: User
-  has_and_belongs_to_many :clients, class_name: User::Client
+  has_and_belongs_to_many :clients, class_name: User::Client,
+                          join_table: :users_visits, association_foreign_key: :user_id
   belongs_to :bonus
   belongs_to :bonus_source
   belongs_to :abonement
