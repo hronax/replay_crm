@@ -15,10 +15,10 @@ Bonus.create(bonus_type: 1, amount: 3, name: 'bla')
 BonusSource.create(name: 'bla')
 
 Salary.create(amount: 5000, admin: User::Admin.first, manager: User::Manager.first)
-MoneyTransaction::AbonementTransaction.create(    amount: 50 + rand(150), user_id: User::Client.first, visit_id: rand(3), transaction_type: 0)
-MoneyTransaction::BonusTransaction.create(        amount: 50 + rand(150), user_id: User::Client.first, visit_id: rand(3), transaction_type: rand(2))
-MoneyTransaction::CashTransaction.create(         amount: 50 + rand(150), user_id: User::Client.first, visit_id: rand(3), transaction_type: rand(3))
-MoneyTransaction::ExchangeTransaction.create(     amount: 50 + rand(150), user_id: User::Client.first, visit_id: rand(3), transaction_type: rand(2))
+MoneyTransaction::AbonementTransaction.create(    amount: 50 + rand(150), user: User::Client.first, visit_id: rand(3), transaction_type: 0)
+MoneyTransaction::BonusTransaction.create(        amount: 50 + rand(150), user: User::Client.first, visit_id: rand(3), transaction_type: rand(2))
+MoneyTransaction::CashTransaction.create(         amount: 50 + rand(150), user: User::Client.first, visit_id: rand(3), transaction_type: rand(3))
+MoneyTransaction::ExchangeTransaction.create(     amount: 50 + rand(150), user: User::Client.first, visit_id: rand(3), transaction_type: rand(2))
 
 3.times do
   wd = WorkDay.first

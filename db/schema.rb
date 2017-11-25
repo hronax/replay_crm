@@ -30,15 +30,7 @@ ActiveRecord::Schema.define(version: 20171125163523) do
     t.integer "amount"
   end
 
-  create_table "salaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "amount"
-    t.integer "admin_id"
-    t.integer "manager_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "the_transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "money_transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "amount"
     t.integer "user_id"
     t.integer "visit_id"
@@ -46,6 +38,14 @@ ActiveRecord::Schema.define(version: 20171125163523) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type"
+  end
+
+  create_table "salaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "amount"
+    t.integer "admin_id"
+    t.integer "manager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20171125163523) do
     t.integer "transaction_id"
     t.integer "additional_gamepads_count"
     t.integer "bonus_id"
+    t.integer "bonus_source_id"
     t.integer "abonement_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
