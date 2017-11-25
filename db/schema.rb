@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125124052) do
+ActiveRecord::Schema.define(version: 20171125132801) do
 
   create_table "abonements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "abonement_type"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20171125124052) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type", default: "Client"
+    t.string "type", default: "User::Client"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -86,12 +86,13 @@ ActiveRecord::Schema.define(version: 20171125124052) do
     t.integer "abonement_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "work_day_id", null: false
   end
 
   create_table "work_days", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
-    t.time "work_start"
-    t.time "work_end"
+    t.integer "work_start"
+    t.integer "work_end"
     t.date "work_day_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

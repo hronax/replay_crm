@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :cash_transactions
 
+
   def admin?
     is_a? User::Admin
   end
