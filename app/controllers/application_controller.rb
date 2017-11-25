@@ -1,3 +1,4 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  include Authorized
+  before_action :authorize!, unless: :devise_controller?
 end
