@@ -1,2 +1,2 @@
-class Client < User
+class User::Client < User
 end

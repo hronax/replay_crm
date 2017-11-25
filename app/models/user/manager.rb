@@ -1,2 +1,3 @@
-class Manager < User
+class User::Manager < User
+
 end

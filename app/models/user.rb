@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  self.abstract_class = true
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,14 +9,14 @@ class User < ApplicationRecord
   has_many :cash_transactions
 
   def admin?
-    type == 'Admin'
+    is_a? User::Admin
   end
 
   def manager?
-    type == 'Manager'
+    is_a? User::Manager
   end
 
   def client?
-    type == 'Client'
+    is_a? User::Client
   end
 end

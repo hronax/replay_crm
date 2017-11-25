@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20171118194841) do
 
-  create_table "salaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "amount"
-    t.integer "admin_id"
-    t.integer "manager_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "abonements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "abonement_type"
     t.integer "manager_id"
@@ -38,7 +30,15 @@ ActiveRecord::Schema.define(version: 20171118194841) do
     t.integer "amount"
   end
 
-  create_table "money_transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "salaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "amount"
+    t.integer "admin_id"
+    t.integer "manager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "the_transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "amount"
     t.integer "user_id"
     t.integer "visit_id"
