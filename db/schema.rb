@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171118194841) do
+ActiveRecord::Schema.define(version: 20171125124052) do
 
   create_table "abonements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "abonement_type"
@@ -30,15 +30,7 @@ ActiveRecord::Schema.define(version: 20171118194841) do
     t.integer "amount"
   end
 
-  create_table "salaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "amount"
-    t.integer "admin_id"
-    t.integer "manager_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "the_transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "money_transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "amount"
     t.integer "user_id"
     t.integer "visit_id"
@@ -46,6 +38,14 @@ ActiveRecord::Schema.define(version: 20171118194841) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type"
+  end
+
+  create_table "salaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "amount"
+    t.integer "admin_id"
+    t.integer "manager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20171118194841) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type", default: "User::Client"
+    t.string "type", default: "Client"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -82,9 +82,20 @@ ActiveRecord::Schema.define(version: 20171118194841) do
     t.integer "transaction_id"
     t.integer "additional_gamepads_count"
     t.integer "bonus_id"
+    t.integer "bonus_source_id"
     t.integer "abonement_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "work_days", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.time "work_start"
+    t.time "work_end"
+    t.date "work_day_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_work_days_on_user_id"
   end
 
 end
